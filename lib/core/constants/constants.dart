@@ -52,7 +52,7 @@ class Constants {
     ),
   );
 
-  //Sizes
+  // Sizes
   static const p4 = 4.0;
   static const p6 = 6.0;
   static const p8 = 8.0;
@@ -65,7 +65,7 @@ class Constants {
   static const p48 = 48.0;
   static const p64 = 64.0;
 
-  //SizedBox widths
+  // SizedBox widths
   static const gapW4 = SizedBox(width: Constants.p4);
   static const gapW6 = SizedBox(width: Constants.p6);
   static const gapW12 = SizedBox(width: Constants.p12);
@@ -78,7 +78,7 @@ class Constants {
   static const gapW48 = SizedBox(width: Constants.p48);
   static const gapW64 = SizedBox(width: Constants.p64);
 
-  //SizedBox heights
+  // SizedBox heights
   static const gapH4 = SizedBox(height: Constants.p4);
   static const gapH6 = SizedBox(height: Constants.p6);
   static const gapH12 = SizedBox(height: Constants.p12);
@@ -90,4 +90,12 @@ class Constants {
   static const gapH32 = SizedBox(height: Constants.p32);
   static const gapH48 = SizedBox(height: Constants.p48);
   static const gapH64 = SizedBox(height: Constants.p64);
+
+  // dio related constants
+  static const String baseUrl = "https://reqres.in/api";
+  static const String users = '/users';
+
+  /// 15 seconds
+  static const int receiveTimeout = 15000;
+  static const int connectionTimeout = 15000;
 }
