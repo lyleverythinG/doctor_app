@@ -19,7 +19,7 @@ class SlideUpRoute extends PageRouteBuilder {
           ) =>
               SlideTransition(
             position: Tween<Offset>(
-              begin: Offset(0, 1),
+              begin: const Offset(0, 1),
               end: Offset.zero,
             ).animate(animation),
             child: child,
@@ -46,7 +46,7 @@ class SlideDownRoute extends PageRouteBuilder {
           ) =>
               SlideTransition(
             position: Tween<Offset>(
-              begin: Offset(0, -1),
+              begin: const Offset(0, -1),
               end: Offset.zero,
             ).animate(animation),
             child: child,
@@ -73,7 +73,7 @@ class SlideLeftRoute extends PageRouteBuilder {
           ) =>
               SlideTransition(
             position: Tween<Offset>(
-              begin: Offset(-1, 0),
+              begin: const Offset(-1, 0),
               end: Offset.zero,
             ).animate(animation),
             child: child,
@@ -100,7 +100,7 @@ class SlideRightRoute extends PageRouteBuilder {
           ) =>
               SlideTransition(
             position: Tween<Offset>(
-              begin: Offset(1, 0),
+              begin: const Offset(1, 0),
               end: Offset.zero,
             ).animate(animation),
             child: child,

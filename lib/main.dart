@@ -1,3 +1,4 @@
+import 'package:doctor_app/core/constants/constants.dart';
 import 'package:doctor_app/core/locator/service_locator.dart';
 import 'package:doctor_app/core/navigation/navigation_service.dart';
 import 'package:doctor_app/features/splash_screen/splash_screen.dart';
@@ -20,6 +21,7 @@ class DoctorApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Doctor App',
+      theme: Constants.aTheme,
       builder: (context, child) => child!,
       navigatorKey: locator<NavigationService>().navigatorKey,
       onGenerateRoute: NavigationService.generateRoute,
