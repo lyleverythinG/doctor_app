@@ -1,16 +1,26 @@
-# doctor_app
+# How to Setup the Project
 
-A new Flutter project.
+## Installing Flutter on windows
 
-## Getting Started
+Follow guide from the official documentation if needed [official guide](https://docs.flutter.dev/get-started/install/windows).
 
-This project is a starting point for a Flutter application.
+## Install FVM
+In order to run the project, you need to install FVM (Flutter Version Management).
+Follow guide from the official documentation if needed [official guide](https://fvm.app/docs/getting_started/installation/).
 
-A few resources to get you started if this is your first Flutter project:
+## Install the latest Flutter Stable Version (3.17.12)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+using command: `fvm install 3.7.12`. 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Run the command to use the Flutter Version.
+
+`fvm use 3.7.12`
+
+## Run the command to update packages.
+
+`fvm flutter pub get`
+
+## Run the app using the command `fvm flutter run`
+
+
+
