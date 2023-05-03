@@ -1,7 +1,7 @@
 import 'package:doctor_app/core/constants/constants.dart';
 import 'package:doctor_app/features/favorites/presentation/pages/favorites_screen.dart';
-import 'package:doctor_app/features/home/presentation/widgets/doctor_type_card.dart';
-import 'package:doctor_app/features/home/presentation/widgets/doctor_card.dart';
+import 'package:doctor_app/features/user_home/presentation/widgets/doctor_type_card.dart';
+import 'package:doctor_app/features/user_home/presentation/widgets/doctor_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
