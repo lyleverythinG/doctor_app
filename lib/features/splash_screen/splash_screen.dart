@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     _timer = Timer(const Duration(seconds: 3), () async {
       await kNavigator
-          .pushReplaceNavigateToWidget(SlideLeftRoute(page: const HomePage()));
+          .pushReplaceNavigateToWidget(SlideLeftRoute(page: const Home()));
     });
   }
 
