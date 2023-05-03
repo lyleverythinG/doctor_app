@@ -1,0 +1,92 @@
+import 'package:doctor_app/core/constants/constants.dart';
+import 'package:doctor_app/core/custom_text/custom_text.dart';
+import 'package:flutter/material.dart';
+
+class DoctorCard extends StatelessWidget {
+  final String profileImg;
+  final String name;
+  final String doctorType;
+  final DateTime addedSince;
+  final String yearsOfExp;
+  const DoctorCard({
+    Key? key,
+    required this.profileImg,
+    required this.name,
+    required this.doctorType,
+    required this.addedSince,
+    required this.yearsOfExp,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 15),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      color: Constants.kBlueAccent,
+      elevation: 3,
+      child: Column(
+        children: [
+          Row(
+            children: <Widget>[
+              Container(
+                height: 150,
+                width: 110,
+                padding: const EdgeInsets.only(
+                    left: 0, top: 10, bottom: 70, right: 20),
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(profileImg), fit: BoxFit.cover)),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: [
+                        Text(
+                          name,
+                          style: const TextStyle(
+                              color: Constants.kBlack87,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 17),
+                        ),
+                      ],
+                    ),
+                    Constants.gapH8,
+                    CustomText(
+                      text: doctorType,
+                    ),
+                    Constants.gapH8,
+                    const CustomText(
+                      text: 'Added Since: may 03, 2023',
+                    ),
+                    Constants.gapH8,
+                    Row(
+                      children: [
+                        const CustomText(
+                          text: 'Years of Experience: ',
+                        ),
+                        CustomText(
+                          text: yearsOfExp,
+                        ),
+                      ],
+                    ),
+                    Constants.gapH8,
+                    const CustomText(
+                      text: 'Double tap to add to favorites',
+                      color: Colors.yellowAccent,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
