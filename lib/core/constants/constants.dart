@@ -54,6 +54,7 @@ class Constants {
 
   //Sizes
   static const p4 = 4.0;
+  static const p6 = 6.0;
   static const p8 = 8.0;
   static const p10 = 10.0;
   static const p12 = 12.0;
@@ -66,6 +67,7 @@ class Constants {
 
   //SizedBox widths
   static const gapW4 = SizedBox(width: Constants.p4);
+  static const gapW6 = SizedBox(width: Constants.p6);
   static const gapW12 = SizedBox(width: Constants.p12);
   static const gapW8 = SizedBox(width: Constants.p8);
   static const gapW10 = SizedBox(width: Constants.p10);
@@ -78,6 +80,7 @@ class Constants {
 
   //SizedBox heights
   static const gapH4 = SizedBox(height: Constants.p4);
+  static const gapH6 = SizedBox(height: Constants.p6);
   static const gapH12 = SizedBox(height: Constants.p12);
   static const gapH8 = SizedBox(height: Constants.p8);
   static const gapH10 = SizedBox(height: Constants.p10);
