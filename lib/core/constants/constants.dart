@@ -30,6 +30,8 @@ class Constants {
   static const Color kBlack87 = Colors.black87;
   static const Color kBlue = Colors.blue;
   static const Color kBlueAccent = Colors.blueAccent;
+  static const Color kCyan = Colors.cyan;
+  static const Color kTransparent = Colors.transparent;
 // Theme Data
   static ThemeData aTheme = ThemeData(
     primaryColor: Constants.kBlue,
@@ -51,6 +53,16 @@ class Constants {
       ),
     ),
   );
+
+  // Doctor types
+  static const String cardiologistTxt = 'cardiologist';
+  static const String neurologistTxt = 'neurologist';
+  static const String pediatricianTxt = 'pediatrician';
+  static const List<String> doctorTypeOptions = <String>[
+    cardiologistTxt,
+    neurologistTxt,
+    pediatricianTxt
+  ];
 
   // Sizes
   static const p4 = 4.0;
