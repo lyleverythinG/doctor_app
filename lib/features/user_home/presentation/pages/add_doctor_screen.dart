@@ -1,8 +1,11 @@
 import 'package:doctor_app/core/constants/constants.dart';
 import 'package:doctor_app/core/reusable_widgets/custom_elevated_button.dart';
 import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
+import 'package:doctor_app/features/user_home/presentation/bloc/bloc/user_bloc.dart';
 import 'package:doctor_app/features/user_home/presentation/widgets/provide_doctor_info.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AddDoctorScreen extends StatefulWidget {
   const AddDoctorScreen({Key? key}) : super(key: key);
@@ -12,9 +15,9 @@ class AddDoctorScreen extends StatefulWidget {
 }
 
 class _AddDoctorScreenState extends State<AddDoctorScreen> {
-  final doctorName = TextEditingController();
+  final doctorNameC = TextEditingController();
   final yearsOfExp = TextEditingController();
-  String initialDoctorTypeVal = Constants.cardiologistTxt;
+  String doctorTypeVal = Constants.cardiologistTxt;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   DropdownMenuItem<String> doctorTypeOptions(String doctorType) {
@@ -26,9 +29,15 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
     );
   }
 
+  void clearFieldsAfterAdding() {
+    doctorNameC.clear();
+    doctorTypeVal = '';
+    yearsOfExp.clear();
+  }
+
   @override
   void dispose() {
-    doctorName.dispose();
+    doctorNameC.dispose();
     yearsOfExp.dispose();
     super.dispose();
   }
@@ -53,7 +62,7 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
                       alignment: Alignment.topLeft,
                       child: CustomText(text: 'Doctor Name:')),
                   ProvideDoctorInformation(
-                    controller: doctorName,
+                    controller: doctorNameC,
                     textInputType: TextInputType.name,
                     hintText: 'Enter Doctor Full Name',
                     errorText: 'Please enter doctor name',
@@ -69,13 +78,13 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
                         margin: const EdgeInsets.symmetric(horizontal: 16),
                         child: DropdownButton<String>(
                             isExpanded: true,
-                            value: initialDoctorTypeVal,
+                            value: doctorTypeVal,
                             items: Constants.doctorTypeOptions
                                 .map(doctorTypeOptions)
                                 .toList(),
                             onChanged: (String? newOption) {
                               builderSetState(() {
-                                initialDoctorTypeVal = newOption!;
+                                doctorTypeVal = newOption!;
                               });
                             }),
                       );
@@ -92,7 +101,22 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
                     errorText: 'Please enter years of experience',
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                  CustomElevatedButton(text: 'Add Doctor', onPressed: () {}),
+                  CustomElevatedButton(
+                    text: 'Add Doctor',
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        context.read<UserBloc>().add(CreateUserDoctor(
+                            doctorName: doctorNameC.text.trim(),
+                            doctorType: doctorTypeVal.trim(),
+                            yearsOfExperience: yearsOfExp.text.trim()));
+                        Fluttertoast.showToast(
+                          msg: 'Successfully Created The User',
+                        );
+                        //clearing fields after adding successfully.
+                        clearFieldsAfterAdding();
+                      }
+                    },
+                  ),
                 ],
               ),
             ),

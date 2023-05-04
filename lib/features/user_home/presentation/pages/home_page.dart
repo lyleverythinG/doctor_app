@@ -1,5 +1,5 @@
 import 'package:doctor_app/core/constants/constants.dart';
-import 'package:doctor_app/features/user_home/presentation/widgets/doctor_card.dart';
+import 'package:doctor_app/features/user_home/presentation/widgets/display_doctors.dart';
 import 'package:doctor_app/features/user_home/presentation/widgets/doctor_type_card.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: MediaQuery.of(context).size.height,
       padding: const EdgeInsets.all(10),
       child: Column(
         children: [
@@ -27,23 +28,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Constants.gapH10,
-          Expanded(
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemCount: 3,
-              itemBuilder: ((context, index) {
-                return GestureDetector(
-                  onDoubleTap: () {},
-                  child: DoctorCard(
-                      profileImg: 'assets/images/doctor1.jpg',
-                      name: 'James Hope',
-                      doctorType: 'Cardiologists',
-                      addedSince: DateTime.now(),
-                      yearsOfExp: '10'),
-                );
-              }),
-            ),
-          ),
+          const DisplayDoctors(),
         ],
       ),
     );
