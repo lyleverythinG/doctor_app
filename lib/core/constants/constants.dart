@@ -32,6 +32,7 @@ class Constants {
   static const Color kBlueAccent = Colors.blueAccent;
   static const Color kCyan = Colors.cyan;
   static const Color kTransparent = Colors.transparent;
+  static const Color kRedAccent = Colors.redAccent;
 // Theme Data
   static ThemeData aTheme = ThemeData(
     primaryColor: Constants.kBlue,
