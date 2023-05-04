@@ -47,7 +47,7 @@ class UserRepo {
     }
   }
 
-  Future<void> deleteUser(int id) async {
+  Future<void> deleteUser(String id) async {
     try {
       await userApi.deleteUser(id);
     } on DioError catch (e) {

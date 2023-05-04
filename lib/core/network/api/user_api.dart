@@ -52,7 +52,7 @@ class API {
     }
   }
 
-  Future<void> deleteUser(int id) async {
+  Future<void> deleteUser(String id) async {
     try {
       await dioClient.delete(Constants.users + '/$id');
     } catch (e) {
