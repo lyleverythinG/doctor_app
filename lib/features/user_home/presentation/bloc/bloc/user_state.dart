@@ -17,3 +17,10 @@ class UserUpdated extends UserState {
   @override
   List<Object> get props => [users];
 }
+
+class LoadingState extends UserState {
+  const LoadingState();
+
+  @override
+  List<Object> get props => [];
+}
