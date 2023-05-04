@@ -1,12 +1,13 @@
 import 'package:doctor_app/core/constants/constants.dart';
 import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class DoctorCard extends StatelessWidget {
   final String profileImg;
   final String name;
   final String doctorType;
-  final DateTime addedSince;
+  final String addedSince;
   final String yearsOfExp;
   const DoctorCard({
     Key? key,
@@ -61,9 +62,10 @@ class DoctorCard extends StatelessWidget {
                       text: doctorType,
                     ),
                     Constants.gapH8,
-                    const CustomText(
-                      text: 'Added Since: may 03, 2023',
-                    ),
+                    CustomText(
+                        text: 'Added:' +
+                            DateFormat.yMMMMd()
+                                .format(DateTime.parse(addedSince))),
                     Constants.gapH8,
                     Row(
                       children: [
