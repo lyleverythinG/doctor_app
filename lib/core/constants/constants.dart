@@ -55,9 +55,9 @@ class Constants {
   );
 
   // Doctor types
-  static const String cardiologistTxt = 'cardiologist';
-  static const String neurologistTxt = 'neurologist';
-  static const String pediatricianTxt = 'pediatrician';
+  static const String cardiologistTxt = 'Cardiologist';
+  static const String neurologistTxt = 'Neurologist';
+  static const String pediatricianTxt = 'Pediatrician';
   static const List<String> doctorTypeOptions = <String>[
     cardiologistTxt,
     neurologistTxt,
