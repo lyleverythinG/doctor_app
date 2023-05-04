@@ -35,11 +35,11 @@ class API {
     }
   }
 
-  Future<Response> updateDoctorInfo(
-      int id, String doctorName, String type, String yearsOfExp) async {
+  Future<Response> updateDoctorInfo(int index, String userId, String doctorName,
+      String type, String yearsOfExp) async {
     try {
       final Response response = await dioClient.put(
-        Constants.users + '/$id',
+        Constants.users + '/$userId',
         data: {
           'doctorName': doctorName,
           'doctorType': type,

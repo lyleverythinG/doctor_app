@@ -37,7 +37,6 @@ class DisplayDoctors extends StatelessWidget {
                         child: Icon(Icons.delete),
                       ),
                     ),
-                    //TODO: check if index or user id should be passed
                     onDismissed: (direction) async {
                       context.read<UserBloc>().add(DeleteDoctor(
                           index: index, userId: state.users[index].id!));
