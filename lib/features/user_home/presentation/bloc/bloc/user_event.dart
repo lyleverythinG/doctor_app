@@ -52,6 +52,20 @@ class UpdateDoctorInfo extends UserEvent {
       [userId, userIndex, doctorName, doctorType, yearsOfExp, createdAt];
 }
 
+class DeleteDoctor extends UserEvent {
+  final int index;
+  final String userId;
+  const DeleteDoctor({
+    required this.index,
+    required this.userId,
+  });
+  @override
+  List<Object> get props => [
+        index,
+        userId,
+      ];
+}
+
 class UserUpdate extends UserEvent {
   final List<UserModel> users;
   const UserUpdate({required this.users});
