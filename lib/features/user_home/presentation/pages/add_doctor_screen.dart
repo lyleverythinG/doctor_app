@@ -16,7 +16,7 @@ class AddDoctorScreen extends StatefulWidget {
 
 class _AddDoctorScreenState extends State<AddDoctorScreen> {
   final doctorNameC = TextEditingController();
-  final yearsOfExp = TextEditingController();
+  final yearsOfExpC = TextEditingController();
   String doctorTypeVal = Constants.cardiologistTxt;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -32,13 +32,13 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
   void clearFieldsAfterAdding() {
     doctorNameC.clear();
     doctorTypeVal = '';
-    yearsOfExp.clear();
+    yearsOfExpC.clear();
   }
 
   @override
   void dispose() {
     doctorNameC.dispose();
-    yearsOfExp.dispose();
+    yearsOfExpC.dispose();
     super.dispose();
   }
 
@@ -95,7 +95,7 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
                       alignment: Alignment.topLeft,
                       child: CustomText(text: 'Years of Experience:')),
                   ProvideDoctorInformation(
-                    controller: yearsOfExp,
+                    controller: yearsOfExpC,
                     textInputType: TextInputType.number,
                     hintText: 'Enter Years of Experience',
                     errorText: 'Please enter years of experience',
@@ -108,7 +108,7 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
                         context.read<UserBloc>().add(CreateUserDoctor(
                             doctorName: doctorNameC.text.trim(),
                             doctorType: doctorTypeVal.trim(),
-                            yearsOfExperience: yearsOfExp.text.trim()));
+                            yearsOfExperience: yearsOfExpC.text.trim()));
                         Fluttertoast.showToast(
                           msg: 'Successfully Created The User',
                         );
