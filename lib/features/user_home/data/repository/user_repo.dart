@@ -9,7 +9,9 @@ class UserRepo {
   UserRepo({required this.userApi});
 
   Future<UserModel> addDoctor(
-      String doctorName, String type, String yearsOfExp) async {
+      {required String doctorName,
+      required String type,
+      required String yearsOfExp}) async {
     try {
       final response = await userApi.addDoctor(doctorName, type, yearsOfExp);
       return UserModel.fromJson(response.data);
@@ -31,7 +33,10 @@ class UserRepo {
   }
 
   Future<UserModel> updateDoctorInfo(
-      int id, String doctorName, String type, String yearsOfExp) async {
+      {required int id,
+      required String doctorName,
+      required String type,
+      required String yearsOfExp}) async {
     try {
       final response =
           await userApi.updateDoctorInfo(id, doctorName, type, yearsOfExp);
