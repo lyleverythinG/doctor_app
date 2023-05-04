@@ -1,5 +1,5 @@
 import 'package:doctor_app/core/constants/constants.dart';
-import 'package:doctor_app/core/custom_text/custom_text.dart';
+import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class DoctorCard extends StatelessWidget {
