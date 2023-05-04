@@ -23,7 +23,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       // updates user info
       emit(const LoadingState());
       final updatedUser = await userRepo.updateDoctorInfo(
-        id: event.userIndex,
+        index: event.userIndex,
+        userId: event.userId,
         doctorName: event.doctorName,
         type: event.doctorType,
         yearsOfExp: event.yearsOfExp,

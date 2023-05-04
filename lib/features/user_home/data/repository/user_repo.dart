@@ -33,13 +33,14 @@ class UserRepo {
   }
 
   Future<UserModel> updateDoctorInfo(
-      {required int id,
+      {required int index,
+      required String userId,
       required String doctorName,
       required String type,
       required String yearsOfExp}) async {
     try {
-      final response =
-          await userApi.updateDoctorInfo(id, doctorName, type, yearsOfExp);
+      final response = await userApi.updateDoctorInfo(
+          index, userId, doctorName, type, yearsOfExp);
       return UserModel.fromJson(response.data);
     } on DioError catch (e) {
       final errorMessage = DioExceptions.dioError(e).toString();
