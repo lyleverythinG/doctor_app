@@ -12,6 +12,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc({required this.userRepo}) : super(UserInitial()) {
     on<CreateUserDoctor>((event, emit) async {
       // adds user
+      emit(const LoadingState());
       final userDoctor = await userRepo.addDoctor(
           doctorName: event.doctorName,
           type: event.doctorType,
