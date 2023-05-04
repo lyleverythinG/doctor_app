@@ -17,7 +17,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           doctorName: event.doctorName,
           type: event.doctorType,
           yearsOfExp: event.yearsOfExperience);
-      users.add(userDoctor);
+
+      // inserts the newly added user to the first on the list.
+      users.insert(0, userDoctor);
       emit(UserUpdated(users: users));
     });
     on<UpdateDoctorInfo>((event, emit) async {
