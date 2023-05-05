@@ -9,6 +9,7 @@ class DoctorCard extends StatelessWidget {
   final String doctorType;
   final String addedSince;
   final String yearsOfExp;
+  final String isFavorite;
   const DoctorCard({
     Key? key,
     required this.profileImg,
@@ -16,6 +17,7 @@ class DoctorCard extends StatelessWidget {
     required this.doctorType,
     required this.addedSince,
     required this.yearsOfExp,
+    required this.isFavorite,
   }) : super(key: key);
 
   @override
@@ -55,6 +57,12 @@ class DoctorCard extends StatelessWidget {
                               fontWeight: FontWeight.w700,
                               fontSize: 17),
                         ),
+                        Constants.gapW4,
+                        if (isFavorite == 'true')
+                          const Icon(
+                            Icons.star,
+                            color: Colors.orangeAccent,
+                          )
                       ],
                     ),
                     Constants.gapH8,
@@ -78,10 +86,11 @@ class DoctorCard extends StatelessWidget {
                       ],
                     ),
                     Constants.gapH8,
-                    const CustomText(
-                      text: 'Double tap to add to favorites',
-                      color: Colors.yellowAccent,
-                    ),
+                    if (isFavorite == 'false')
+                      const CustomText(
+                        text: 'Double tap to add to favorites',
+                        color: Colors.yellowAccent,
+                      ),
                   ],
                 ),
               ),

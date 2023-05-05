@@ -34,6 +34,7 @@ class SortedDoctorScreen extends StatelessWidget {
                         return Container(
                           margin: const EdgeInsets.only(top: 8),
                           child: DoctorCard(
+                            isFavorite: state.sortedDoctors[index].isFavorite!,
                             profileImg: 'assets/images/doctor1.jpg',
                             name: state.sortedDoctors[index].doctorName!,
                             doctorType: state.sortedDoctors[index].doctorType!,
@@ -54,7 +55,7 @@ class SortedDoctorScreen extends StatelessWidget {
                     ),
                   );
                 }
-                if (state is LoadingState) {
+                if (state is SortedUsersLoadingState) {
                   return const Loading();
                 }
                 return const SizedBox.shrink();
