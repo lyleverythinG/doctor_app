@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 class CustomElevatedButton extends StatelessWidget {
   final void Function()? onPressed;
   final String text;
-  const CustomElevatedButton({Key? key, this.onPressed, required this.text})
+  final double? fontSize;
+  final FontWeight? fontWeight;
+  const CustomElevatedButton(
+      {Key? key,
+      this.onPressed,
+      required this.text,
+      this.fontSize,
+      this.fontWeight})
       : super(key: key);
 
   @override
@@ -12,7 +19,11 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
       child: Text(
         text,
-        style: const TextStyle(color: Colors.white),
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+        ),
       ),
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(

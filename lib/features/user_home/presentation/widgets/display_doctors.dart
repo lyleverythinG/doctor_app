@@ -1,6 +1,7 @@
 import 'package:doctor_app/core/constants/constants.dart';
 import 'package:doctor_app/core/locator/service_locator.dart';
 import 'package:doctor_app/core/navigation/navigation_animation.dart';
+import 'package:doctor_app/core/reusable_widgets/loading.dart';
 import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
 import 'package:doctor_app/features/user_home/presentation/bloc/bloc/user_bloc.dart';
 import 'package:doctor_app/features/user_home/presentation/pages/edit_doctor_info_screen.dart';
@@ -73,7 +74,7 @@ class DisplayDoctors extends StatelessWidget {
           }
         }
         if (state is LoadingState) {
-          return const Center(child: CircularProgressIndicator());
+          return const Loading();
         }
         // used this instead of an empty container because this is a const.
         return const SizedBox.shrink();

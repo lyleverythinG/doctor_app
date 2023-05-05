@@ -1,11 +1,8 @@
 import 'package:doctor_app/core/constants/constants.dart';
-import 'package:doctor_app/core/locator/service_locator.dart';
-import 'package:doctor_app/core/navigation/navigation_animation.dart';
 import 'package:doctor_app/core/reusable_widgets/custom_elevated_button.dart';
 import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
 import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
 import 'package:doctor_app/features/user_home/presentation/bloc/bloc/user_bloc.dart';
-import 'package:doctor_app/features/user_home/presentation/pages/home.dart';
 import 'package:doctor_app/features/user_home/presentation/widgets/provide_doctor_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,10 +11,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 class EditDoctorInfoScreen extends StatefulWidget {
   final UserModel userModel;
   final int userIndex;
+  final bool isWhiteAppBar;
   const EditDoctorInfoScreen({
     Key? key,
     required this.userModel,
     required this.userIndex,
+    this.isWhiteAppBar = false,
   }) : super(key: key);
 
   @override
@@ -37,6 +36,12 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
         doctorType,
       ),
     );
+  }
+
+  void clearFieldsAfterUpdating() {
+    doctorNameC.clear();
+    doctorTypeVal = '';
+    yearsOfExpC.clear();
   }
 
   @override
@@ -59,7 +64,14 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
+        backgroundColor: widget.isWhiteAppBar
+            ? Constants.kWhite // use white app bar if coming from search bar.
+            : null,
+      ),
       body: Container(
         padding: const EdgeInsets.all(8),
         height: MediaQuery.of(context).size.height,
@@ -135,11 +147,16 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
                                     createdAt: widget.userModel.createdAt!,
                                   ),
                                 );
+                            clearFieldsAfterUpdating();
                             Fluttertoast.showToast(
                               msg: 'Successfully updated doctor information.',
                             );
-                            kNavigator.pushReplaceNavigateToWidget(
-                                SlideRightRoute(page: const Home()));
+                            if (widget.isWhiteAppBar) {
+                              int count = 0;
+                              // pop 3 times after updating doctor info if from search bar home screen.
+                              Navigator.popUntil(
+                                  context, (route) => count++ == 3);
+                            }
                           }
                         },
                       ),
