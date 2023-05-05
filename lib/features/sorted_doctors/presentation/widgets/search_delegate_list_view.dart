@@ -5,8 +5,12 @@ import 'package:flutter/material.dart';
 class SearchDelegateListView extends StatelessWidget {
   final List<UserModel> listOfDoctors;
   final List<UserModel> matchedKeyword;
+  final bool? isFromHomeSearch;
   const SearchDelegateListView(
-      {Key? key, required this.listOfDoctors, required this.matchedKeyword})
+      {Key? key,
+      required this.listOfDoctors,
+      required this.matchedKeyword,
+      this.isFromHomeSearch = true})
       : super(key: key);
 
   @override
@@ -39,6 +43,7 @@ class SearchDelegateListView extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (c) => SearchedDoctorScreen(
+                          isFromHomeSearch: isFromHomeSearch,
                           userIndex: userIndex,
                           userModel: matchedKeyword[index],
                         )));

@@ -3,7 +3,7 @@ import 'package:doctor_app/core/locator/service_locator.dart';
 import 'package:doctor_app/core/navigation/navigation_animation.dart';
 import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
 import 'package:doctor_app/features/sorted_doctors/presentation/bloc/bloc/sorted_bloc.dart';
-import 'package:doctor_app/features/sorted_doctors/presentation/pages/sorted_doctors_screen.dart';
+import 'package:doctor_app/features/sorted_doctors/presentation/pages/filtered_doctor_type_screen.dart';
 import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
 import 'package:doctor_app/features/user_home/presentation/bloc/bloc/user_bloc.dart';
 import 'package:doctor_app/features/user_home/presentation/widgets/doctor_type_image.dart';
@@ -39,7 +39,7 @@ class DoctorTypeOptions extends StatelessWidget {
                     doctorType: doctorTypeIcon[index].doctorType,
                     doctors: doctors));
                 kNavigator.pushNavigateToWidget(SlideLeftRoute(
-                    page: SortedDoctorScreen(
+                    page: FilteredByDoctorTypeScreen(
                   doctorType: doctorTypeIcon[index].doctorType,
                 )));
               },

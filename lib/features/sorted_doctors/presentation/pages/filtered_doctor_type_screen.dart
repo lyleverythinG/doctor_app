@@ -2,21 +2,47 @@ import 'package:doctor_app/core/constants/constants.dart';
 import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
 import 'package:doctor_app/core/reusable_widgets/loading.dart';
 import 'package:doctor_app/features/sorted_doctors/presentation/bloc/bloc/sorted_bloc.dart';
+import 'package:doctor_app/features/sorted_doctors/presentation/pages/appbar_searched_screen.dart';
+import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
 import 'package:doctor_app/features/user_home/presentation/widgets/doctor_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SortedDoctorScreen extends StatelessWidget {
+class FilteredByDoctorTypeScreen extends StatefulWidget {
   final String doctorType;
-  const SortedDoctorScreen({Key? key, required this.doctorType})
+  const FilteredByDoctorTypeScreen({Key? key, required this.doctorType})
       : super(key: key);
 
   @override
+  State<FilteredByDoctorTypeScreen> createState() =>
+      _FilteredByDoctorTypeScreenState();
+}
+
+class _FilteredByDoctorTypeScreenState
+    extends State<FilteredByDoctorTypeScreen> {
+  List<UserModel> sortedDoctorsByType = [];
+  @override
   Widget build(BuildContext context) {
+    final userState = context.watch<SortedBloc>().state;
+    if (userState is SortedDoctorsResult) {
+      sortedDoctorsByType = userState.sortedDoctors;
+    }
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              showSearch(
+                  context: context,
+                  delegate: CustomSearchDelegate(
+                      listOfDoctors: sortedDoctorsByType,
+                      isFromHomeSearch: false));
+            },
+          ),
+        ],
         title: CustomText(
-            text: doctorType.toUpperCase(), color: Constants.kBlack87),
+            text: widget.doctorType.toUpperCase(), color: Constants.kBlack87),
         centerTitle: true,
       ),
       body: Container(
@@ -50,7 +76,7 @@ class SortedDoctorScreen extends StatelessWidget {
                   return Expanded(
                     child: Center(
                       child: CustomText(
-                        text: 'No  $doctorType added at the moment',
+                        text: 'No  ${widget.doctorType} added at the moment',
                       ),
                     ),
                   );
