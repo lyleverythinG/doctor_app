@@ -5,7 +5,7 @@ class UserModel {
   String? id;
   String? createdAt;
   String? updatedAt;
-  bool? isFavorite;
+  String? isFavorite;
 
   UserModel(
       {required this.doctorName,
