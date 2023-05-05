@@ -49,13 +49,14 @@ class FavoritesScreen extends StatelessWidget {
                         },
                       ),
                     );
-                  } else {
-                    return const NoFavoritesText();
                   }
                 }
-                return SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.75,
-                    child: const Loading());
+                if (state is LoadingState) {
+                  return SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.75,
+                      child: const Loading());
+                }
+                return const NoFavoritesText();
               },
             ),
           ],
