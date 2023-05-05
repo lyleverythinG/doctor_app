@@ -23,6 +23,7 @@ class FavoritesScreen extends StatelessWidget {
                       .where((user) => user.isFavorite == 'true')
                       .isNotEmpty;
                   if (containsFavorites) {
+                    // displays listview cards if it contains favorites
                     return Expanded(
                       child: ListView.builder(
                         itemCount: state.users.length,
@@ -52,6 +53,7 @@ class FavoritesScreen extends StatelessWidget {
                   }
                 }
                 if (state is LoadingState) {
+                  // display loading UI when fetching users.
                   return SizedBox(
                       height: MediaQuery.of(context).size.height * 0.75,
                       child: const Loading());
