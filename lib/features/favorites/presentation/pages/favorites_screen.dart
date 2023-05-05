@@ -58,7 +58,6 @@ class FavoritesScreen extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.75,
                       child: const Loading());
                 }
-                // displays No Favorite Text if no doctors is being added to favorites.
                 return const NoFavoritesText();
               },
             ),
