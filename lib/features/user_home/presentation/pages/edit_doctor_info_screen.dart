@@ -14,10 +14,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 class EditDoctorInfoScreen extends StatefulWidget {
   final UserModel userModel;
   final int userIndex;
+  final bool isWhiteAppBar;
   const EditDoctorInfoScreen({
     Key? key,
     required this.userModel,
     required this.userIndex,
+    this.isWhiteAppBar = false,
   }) : super(key: key);
 
   @override
@@ -59,7 +61,14 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black,
+        ),
+        backgroundColor: widget.isWhiteAppBar
+            ? Constants.kWhite // use white app bar if coming from search bar.
+            : null,
+      ),
       body: Container(
         padding: const EdgeInsets.all(8),
         height: MediaQuery.of(context).size.height,
@@ -138,8 +147,16 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
                             Fluttertoast.showToast(
                               msg: 'Successfully updated doctor information.',
                             );
-                            kNavigator.pushReplaceNavigateToWidget(
-                                SlideRightRoute(page: const Home()));
+                            if (widget.isWhiteAppBar) {
+                              int count = 0;
+                              // pop 3 times after updating doctor info if from search bar home screen.
+                              Navigator.popUntil(
+                                  context, (route) => count++ == 3);
+                            } else {
+                              // else, just go straight to home.
+                              kNavigator.pushReplaceNavigateToWidget(
+                                  SlideRightRoute(page: const Home()));
+                            }
                           }
                         },
                       ),
