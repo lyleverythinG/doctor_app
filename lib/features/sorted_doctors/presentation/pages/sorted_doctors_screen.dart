@@ -1,5 +1,6 @@
 import 'package:doctor_app/core/constants/constants.dart';
 import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
+import 'package:doctor_app/core/reusable_widgets/loading.dart';
 import 'package:doctor_app/features/sorted_doctors/presentation/bloc/bloc/sorted_bloc.dart';
 import 'package:doctor_app/features/user_home/presentation/widgets/doctor_card.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,7 @@ class SortedDoctorScreen extends StatelessWidget {
                   );
                 }
                 if (state is LoadingState) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Loading();
                 }
                 return const SizedBox.shrink();
               },
