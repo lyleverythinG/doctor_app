@@ -9,8 +9,8 @@ abstract class SortedState extends Equatable {
 
 class SortedInitial extends SortedState {}
 
-class LoadingState extends SortedState {
-  const LoadingState();
+class SortedUsersLoadingState extends SortedState {
+  const SortedUsersLoadingState();
 
   @override
   List<Object> get props => [];

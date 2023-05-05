@@ -13,7 +13,11 @@ class UserRepo {
       required String type,
       required String yearsOfExp}) async {
     try {
-      final response = await userApi.addDoctor(doctorName, type, yearsOfExp);
+      final response = await userApi.addDoctor(
+        doctorName,
+        type,
+        yearsOfExp,
+      );
       return UserModel.fromJson(response.data);
     } on DioError catch (e) {
       final errorMessage = DioExceptions.dioError(e).toString();
@@ -51,6 +55,30 @@ class UserRepo {
   Future<void> deleteUser(String id) async {
     try {
       await userApi.deleteUser(id);
+    } on DioError catch (e) {
+      final errorMessage = DioExceptions.dioError(e).toString();
+      throw errorMessage;
+    }
+  }
+
+  Future<UserModel> removeDoctorFromFavorite({
+    required String userId,
+  }) async {
+    try {
+      final response = await userApi.removeDoctFromFavorites(userId);
+      return UserModel.fromJson(response.data);
+    } on DioError catch (e) {
+      final errorMessage = DioExceptions.dioError(e).toString();
+      throw errorMessage;
+    }
+  }
+
+  Future<UserModel> addDoctorToFavorite({
+    required String userId,
+  }) async {
+    try {
+      final response = await userApi.addDoctToFavorite(userId);
+      return UserModel.fromJson(response.data);
     } on DioError catch (e) {
       final errorMessage = DioExceptions.dioError(e).toString();
       throw errorMessage;

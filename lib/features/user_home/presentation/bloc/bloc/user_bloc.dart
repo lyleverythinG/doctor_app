@@ -34,9 +34,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       );
       List<UserModel> updatedUsers = List.from(users);
       updatedUsers[event.userIndex] = updatedUser;
-      // added missing information of user that does not changed
+      // added missing values that are not part of response.
       updatedUsers[event.userIndex].createdAt = event.createdAt;
       updatedUsers[event.userIndex].id = event.userId;
+      updatedUsers[event.userIndex].isFavorite = event.isFavorite;
       emit(UserUpdated(users: updatedUsers));
     });
 
@@ -46,6 +47,27 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       await userRepo.deleteUser(event.userId);
       users.removeAt(event.index);
       Fluttertoast.showToast(msg: 'deleted successfully');
+      emit(UserUpdated(users: users));
+    });
+
+    on<AddDoctorToFavorites>((event, emit) async {
+      // add a particular doctor to favorites.
+      emit(const LoadingState());
+      final updatedUser = await userRepo.addDoctorToFavorite(
+        userId: event.user.id!,
+      );
+      users[event.userIndex].isFavorite = updatedUser.isFavorite;
+      Fluttertoast.showToast(msg: 'Added to favorites');
+      emit(UserUpdated(users: users));
+    });
+
+    on<RemoveDoctorFromFavorites>((event, emit) async {
+      // remove a particular doctor from favorites list.
+      emit(const LoadingState());
+      final updatedUser =
+          await userRepo.removeDoctorFromFavorite(userId: event.user.id!);
+      users[event.userIndex].isFavorite = updatedUser.isFavorite;
+      Fluttertoast.showToast(msg: 'Removed from favorites');
       emit(UserUpdated(users: users));
     });
   }

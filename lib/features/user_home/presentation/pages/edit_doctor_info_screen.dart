@@ -26,7 +26,7 @@ class EditDoctorInfoScreen extends StatefulWidget {
 class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
   final doctorNameC = TextEditingController();
   final yearsOfExpC = TextEditingController();
-  String doctorTypeVal = Constants.cardiologistTxt;
+  String? doctorTypeVal = Constants.cardiologistTxt;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   DropdownMenuItem<String> doctorTypeOptions(String doctorType) {
@@ -36,12 +36,6 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
         doctorType,
       ),
     );
-  }
-
-  void clearFieldsAfterUpdating() {
-    doctorNameC.clear();
-    doctorTypeVal = '';
-    yearsOfExpC.clear();
   }
 
   @override
@@ -109,7 +103,8 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
                             margin: const EdgeInsets.symmetric(horizontal: 16),
                             child: DropdownButton<String>(
                                 isExpanded: true,
-                                value: doctorTypeVal,
+                                value:
+                                    doctorTypeVal ?? Constants.cardiologistTxt,
                                 items: Constants.doctorTypeOptions
                                     .map(doctorTypeOptions)
                                     .toList(),
@@ -139,18 +134,20 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
                           if (_formKey.currentState!.validate()) {
                             context.read<UserBloc>().add(
                                   UpdateDoctorInfo(
+                                    isFavorite: widget.userModel.isFavorite!,
                                     userId: widget.userModel.id!,
                                     userIndex: widget.userIndex,
                                     doctorName: doctorNameC.text.trim(),
-                                    doctorType: doctorTypeVal.trim(),
+                                    doctorType: doctorTypeVal!.trim(),
                                     yearsOfExp: yearsOfExpC.text.trim(),
                                     createdAt: widget.userModel.createdAt!,
                                   ),
                                 );
-                            clearFieldsAfterUpdating();
                             Fluttertoast.showToast(
                               msg: 'Successfully updated doctor information.',
                             );
+                            // hides keyboard
+                            FocusManager.instance.primaryFocus?.unfocus();
                             if (widget.isWhiteAppBar) {
                               int count = 0;
                               // pop 3 times after updating doctor info if from search bar home screen.

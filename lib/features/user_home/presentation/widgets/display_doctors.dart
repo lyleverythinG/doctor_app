@@ -57,8 +57,21 @@ class DisplayDoctors extends StatelessWidget {
                               yearsOfExp: state.users[index].yearsOfExp),
                         )));
                       },
-                      onDoubleTap: () {},
+                      onDoubleTap: () {
+                        // can add or remove from favorites.
+                        state.users[index].isFavorite == 'false'
+                            ? context.read<UserBloc>().add(
+                                  AddDoctorToFavorites(
+                                      user: state.users[index],
+                                      userIndex: index),
+                                )
+                            : context.read<UserBloc>().add(
+                                RemoveDoctorFromFavorites(
+                                    user: state.users[index],
+                                    userIndex: index));
+                      },
                       child: DoctorCard(
+                          isFavorite: state.users[index].isFavorite!,
                           profileImg: 'assets/images/doctor1.jpg',
                           name: state.users[index].doctorName!,
                           doctorType: state.users[index].doctorType!,
