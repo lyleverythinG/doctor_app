@@ -18,7 +18,6 @@ class DoctorTypeOptions extends StatelessWidget {
     final userState = context.watch<UserBloc>().state;
     List<UserModel> doctors = [];
     if (userState is UserUpdated) {
-      debugPrint('userupdated ni ! ${userState.users.length}');
       doctors = userState.users;
     }
     List<DoctorTypeIcon> doctorTypeIcon = [
