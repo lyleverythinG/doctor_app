@@ -8,7 +8,10 @@ class API {
   API({required this.dioClient});
 
   Future<Response> addDoctor(
-      String doctorName, String type, String yearsOfExp) async {
+    String doctorName,
+    String type,
+    String yearsOfExp,
+  ) async {
     try {
       final Response response = await dioClient.post(
         Constants.users,
@@ -16,6 +19,7 @@ class API {
           'doctorName': doctorName,
           'doctorType': type,
           'yearsOfExp': yearsOfExp,
+          'isFavorite': 'false',
         },
       );
       return response;
@@ -37,6 +41,55 @@ class API {
 
   Future<Response> updateDoctorInfo(int index, String userId, String doctorName,
       String type, String yearsOfExp) async {
+    try {
+      final Response response = await dioClient.put(
+        Constants.users + '/$userId',
+        data: {
+          'doctorName': doctorName,
+          'doctorType': type,
+          'yearsOfExp': yearsOfExp,
+        },
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<Response> removeDoctFromFavorites(
+    String userId,
+  ) async {
+    try {
+      final Response response = await dioClient.put(
+        Constants.users + '/$userId',
+        data: {
+          'isFavorite': 'false',
+        },
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<Response> addDoctToFavorite(
+    String userId,
+  ) async {
+    try {
+      final Response response = await dioClient.put(
+        Constants.users + '/$userId',
+        data: {
+          'isFavorite': 'true',
+        },
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<Response> removeFromFavorite(int index, String userId,
+      String doctorName, String type, String yearsOfExp) async {
     try {
       final Response response = await dioClient.put(
         Constants.users + '/$userId',

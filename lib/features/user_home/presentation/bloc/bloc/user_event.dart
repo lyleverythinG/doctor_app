@@ -39,6 +39,7 @@ class UpdateDoctorInfo extends UserEvent {
   final String doctorType;
   final String yearsOfExp;
   final String createdAt;
+  final String isFavorite;
 
   const UpdateDoctorInfo(
       {required this.userId,
@@ -46,6 +47,7 @@ class UpdateDoctorInfo extends UserEvent {
       required this.doctorName,
       required this.doctorType,
       required this.yearsOfExp,
+      required this.isFavorite,
       required this.createdAt});
   @override
   List<Object> get props =>
@@ -64,6 +66,23 @@ class DeleteDoctor extends UserEvent {
         index,
         userId,
       ];
+}
+
+class AddDoctorToFavorites extends UserEvent {
+  final UserModel user;
+  final int userIndex;
+  const AddDoctorToFavorites({required this.user, required this.userIndex});
+  @override
+  List<Object> get props => [user, userIndex];
+}
+
+class RemoveDoctorFromFavorites extends UserEvent {
+  final UserModel user;
+  final int userIndex;
+  const RemoveDoctorFromFavorites(
+      {required this.user, required this.userIndex});
+  @override
+  List<Object> get props => [user, userIndex];
 }
 
 class UserUpdate extends UserEvent {
