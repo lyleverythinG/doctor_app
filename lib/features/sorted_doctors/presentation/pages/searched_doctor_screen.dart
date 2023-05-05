@@ -10,8 +10,12 @@ import 'package:intl/intl.dart';
 class SearchedDoctorScreen extends StatelessWidget {
   final int userIndex;
   final UserModel userModel;
+  final bool? isFromHomeSearch;
   const SearchedDoctorScreen(
-      {Key? key, required this.userModel, required this.userIndex})
+      {Key? key,
+      required this.userModel,
+      required this.userIndex,
+      this.isFromHomeSearch = true})
       : super(key: key);
 
   @override
@@ -43,20 +47,21 @@ class SearchedDoctorScreen extends StatelessWidget {
             CustomText(
                 text: DateFormat.yMMMMd()
                     .format(DateTime.parse(userModel.createdAt!))),
-            CustomElevatedButton(
-              text: 'Update Doctor Information'.toUpperCase(),
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => EditDoctorInfoScreen(
-                            userModel: userModel,
-                            userIndex: userIndex,
-                            isWhiteAppBar: true)));
-              },
-            ),
+            if (isFromHomeSearch == true)
+              CustomElevatedButton(
+                text: 'Update Doctor Information'.toUpperCase(),
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EditDoctorInfoScreen(
+                              userModel: userModel,
+                              userIndex: userIndex,
+                              isWhiteAppBar: true)));
+                },
+              ),
           ],
         ),
       ),

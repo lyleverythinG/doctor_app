@@ -31,7 +31,6 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
 
   void clearFieldsAfterAdding() {
     doctorNameC.clear();
-    doctorTypeVal = '';
     yearsOfExpC.clear();
   }
 

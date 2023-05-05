@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   List<UserModel> listOfDoctors;
-  CustomSearchDelegate({required this.listOfDoctors});
+  final bool? isFromHomeSearch;
+  CustomSearchDelegate(
+      {required this.listOfDoctors, this.isFromHomeSearch = true});
   //this is the list you want to search
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -39,7 +41,9 @@ class CustomSearchDelegate extends SearchDelegate {
       }
     }
     return SearchDelegateListView(
-        listOfDoctors: listOfDoctors, matchedKeyword: matchedKeyword);
+        isFromHomeSearch: isFromHomeSearch,
+        listOfDoctors: listOfDoctors,
+        matchedKeyword: matchedKeyword);
   }
 
   @override
@@ -53,6 +57,9 @@ class CustomSearchDelegate extends SearchDelegate {
       }
     }
     return SearchDelegateListView(
-        listOfDoctors: listOfDoctors, matchedKeyword: matchedKeyword);
+      listOfDoctors: listOfDoctors,
+      matchedKeyword: matchedKeyword,
+      isFromHomeSearch: isFromHomeSearch,
+    );
   }
 }
