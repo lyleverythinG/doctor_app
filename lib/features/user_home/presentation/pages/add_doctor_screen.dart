@@ -105,6 +105,8 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
                     text: 'Add Doctor',
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        // hides keyboard
+                        FocusManager.instance.primaryFocus?.unfocus();
                         context.read<UserBloc>().add(CreateUserDoctor(
                             doctorName: doctorNameC.text.trim(),
                             doctorType: doctorTypeVal.trim(),
