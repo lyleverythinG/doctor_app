@@ -10,6 +10,7 @@ class DoctorCard extends StatelessWidget {
   final String addedSince;
   final String yearsOfExp;
   final String isFavorite;
+  final bool? isFromDoctorTypeScreen;
   const DoctorCard({
     Key? key,
     required this.profileImg,
@@ -18,6 +19,7 @@ class DoctorCard extends StatelessWidget {
     required this.addedSince,
     required this.yearsOfExp,
     required this.isFavorite,
+    this.isFromDoctorTypeScreen = false,
   }) : super(key: key);
 
   @override
@@ -86,7 +88,8 @@ class DoctorCard extends StatelessWidget {
                       ],
                     ),
                     Constants.gapH8,
-                    if (isFavorite == 'false')
+                    if (isFavorite == 'false' &&
+                        isFromDoctorTypeScreen == false)
                       const CustomText(
                         text: 'Double tap to add to favorites',
                         color: Colors.yellowAccent,

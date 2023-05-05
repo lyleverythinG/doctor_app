@@ -3,6 +3,7 @@ import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
 import 'package:doctor_app/core/reusable_widgets/loading.dart';
 import 'package:doctor_app/features/sorted_doctors/presentation/bloc/bloc/sorted_bloc.dart';
 import 'package:doctor_app/features/sorted_doctors/presentation/pages/appbar_searched_screen.dart';
+import 'package:doctor_app/features/sorted_doctors/presentation/pages/searched_doctor_screen.dart';
 import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
 import 'package:doctor_app/features/user_home/presentation/widgets/doctor_card.dart';
 import 'package:flutter/material.dart';
@@ -57,15 +58,30 @@ class _FilteredByDoctorTypeScreenState
                     child: ListView.builder(
                       itemCount: state.sortedDoctors.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          margin: const EdgeInsets.only(top: 8),
-                          child: DoctorCard(
-                            isFavorite: state.sortedDoctors[index].isFavorite!,
-                            profileImg: 'assets/images/doctor1.jpg',
-                            name: state.sortedDoctors[index].doctorName!,
-                            doctorType: state.sortedDoctors[index].doctorType!,
-                            addedSince: state.sortedDoctors[index].createdAt!,
-                            yearsOfExp: state.sortedDoctors[index].yearsOfExp!,
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (c) => SearchedDoctorScreen(
+                                        isFromHomeSearch: false,
+                                        userModel: state.sortedDoctors[index],
+                                        userIndex: index)));
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 8),
+                            child: DoctorCard(
+                              isFromDoctorTypeScreen: true,
+                              isFavorite:
+                                  state.sortedDoctors[index].isFavorite!,
+                              profileImg: 'assets/images/doctor1.jpg',
+                              name: state.sortedDoctors[index].doctorName!,
+                              doctorType:
+                                  state.sortedDoctors[index].doctorType!,
+                              addedSince: state.sortedDoctors[index].createdAt!,
+                              yearsOfExp:
+                                  state.sortedDoctors[index].yearsOfExp!,
+                            ),
                           ),
                         );
                       },
