@@ -6,6 +6,7 @@ import 'package:doctor_app/features/sorted_doctors/presentation/bloc/bloc/sorted
 import 'package:doctor_app/features/splash_screen/splash_screen.dart';
 import 'package:doctor_app/features/user_home/data/repository/user_repo.dart';
 import 'package:doctor_app/features/user_home/presentation/bloc/bloc/user_bloc.dart';
+import 'package:doctor_app/features/users_from_api/presentation/bloc/bloc/user_api_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,6 +34,10 @@ class DoctorApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => SortedBloc(),
+          ),
+          BlocProvider(
+            create: (context) =>
+                UserApiBloc(userRepo: RepositoryProvider.of<UserRepo>(context)),
           ),
         ],
         child: MaterialApp(

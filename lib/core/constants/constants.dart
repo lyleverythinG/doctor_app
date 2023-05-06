@@ -106,6 +106,8 @@ class Constants {
 
   // dio related constants
   static const String baseUrl = "https://reqres.in/api";
+  static const String gettingUsersFromApiUrl =
+      "https://reqres.in/api/users?page=2";
   static const String users = '/users';
 
   /// 15 seconds

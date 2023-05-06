@@ -5,6 +5,8 @@ import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
 import 'package:doctor_app/features/user_home/presentation/bloc/bloc/user_bloc.dart';
 import 'package:doctor_app/features/user_home/presentation/pages/add_doctor_screen.dart';
 import 'package:doctor_app/features/user_home/presentation/pages/home_page.dart';
+import 'package:doctor_app/features/users_from_api/presentation/bloc/bloc/user_api_bloc.dart';
+import 'package:doctor_app/features/users_from_api/presentation/pages/users_from_api_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,6 +25,7 @@ class _HomeState extends State<Home> {
     const HomeScreen(),
     const AddDoctorScreen(),
     const FavoritesScreen(),
+    const UserFromApiScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -32,6 +35,7 @@ class _HomeState extends State<Home> {
     }
     return Scaffold(
       appBar: AppBar(
+        title: _currentIndex == 3 ? const Text('Users Fetched from API') : null,
         actions: [
           if (_currentIndex == 0)
             IconButton(
@@ -50,25 +54,33 @@ class _HomeState extends State<Home> {
         onTap: (index) {
           setState(() {
             _currentIndex = index;
+            if (index == 3) {
+              context.read<UserApiBloc>().add(const FetchUsersFromApi());
+            }
           });
         },
         backgroundColor: Constants.kBlueAccent,
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: false,
-        showSelectedLabels: false,
+        showSelectedLabels: true,
         selectedItemColor: Constants.kBlack87,
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.person), label: "Home", tooltip: 'Home'),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_add_alt_1),
-            label: 'Add Doctor',
+            label: 'Add',
             tooltip: 'Add Doctor',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.star),
             label: "Favorites",
             tooltip: 'Favorites',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Users Api",
+            tooltip: 'Users from Api',
           ),
         ],
       ),
