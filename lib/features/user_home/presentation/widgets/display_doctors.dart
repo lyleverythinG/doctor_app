@@ -1,14 +1,4 @@
-import 'package:doctor_app/core/constants/constants.dart';
-import 'package:doctor_app/core/locator/service_locator.dart';
-import 'package:doctor_app/core/navigation/navigation_animation.dart';
-import 'package:doctor_app/core/reusable_widgets/loading.dart';
-import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
-import 'package:doctor_app/features/user_home/presentation/bloc/bloc/user_bloc.dart';
-import 'package:doctor_app/features/user_home/presentation/pages/edit_doctor_info_screen.dart';
-import 'package:doctor_app/features/user_home/presentation/widgets/add_doctor_text.dart';
-import 'package:doctor_app/features/user_home/presentation/widgets/doctor_card.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:doctor_app/core/packages/core_packages/core_related_packages.dart';
 
 class DisplayDoctors extends StatelessWidget {
   const DisplayDoctors({

@@ -1,10 +1,5 @@
-import 'package:doctor_app/core/constants/constants.dart';
-import 'package:doctor_app/core/reusable_widgets/custom_elevated_button.dart';
-import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
-import 'package:doctor_app/features/sorted_doctors/presentation/widgets/profile_circle_avatar.dart';
-import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
-import 'package:doctor_app/features/user_home/presentation/pages/edit_doctor_info_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:doctor_app/core/packages/core_packages/core_related_packages.dart';
+import 'package:doctor_app/core/packages/sorted_doctors/sorted_doctors_feature_packages.dart';
 import 'package:intl/intl.dart';
 
 class SearchedDoctorScreen extends StatelessWidget {

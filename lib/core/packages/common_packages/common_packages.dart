@@ -10,3 +10,4 @@ export 'package:dio/dio.dart';
 export 'package:fluttertoast/fluttertoast.dart';
 export 'package:hive/hive.dart';
 export 'package:get_it/get_it.dart';
+export 'package:flutter/foundation.dart';

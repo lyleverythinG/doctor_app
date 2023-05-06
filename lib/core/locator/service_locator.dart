@@ -1,9 +1,5 @@
-import 'package:dio/dio.dart';
-import 'package:doctor_app/core/navigation/navigation_service.dart';
-import 'package:doctor_app/core/network/api/user_api.dart';
 import 'package:doctor_app/core/network/dio/dio_client.dart';
-import 'package:doctor_app/features/user_home/data/repository/user_repo.dart';
-import 'package:get_it/get_it.dart';
+import 'package:doctor_app/core/packages/core_packages/core_related_packages.dart';
 
 GetIt locator = GetIt.instance;
 final kCurrentContext =

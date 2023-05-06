@@ -1,5 +1,5 @@
-import 'package:doctor_app/features/users_from_api/domain/users_api_model.dart';
-import 'package:hive/hive.dart';
+import 'package:doctor_app/core/packages/users_from_api_feature_packages/users_from_api_packages.dart';
+import '../../packages/common_packages/common_packages.dart';
 
 class UserApiModelAdapter extends TypeAdapter<UserApiModel> {
   @override

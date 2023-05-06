@@ -1,5 +1,4 @@
-import 'package:doctor_app/core/constants/constants.dart';
-import 'package:flutter/material.dart';
+import '../../../../core/packages/core_packages/core_related_packages.dart';
 
 class ProfileCircleAvatar extends StatelessWidget {
   const ProfileCircleAvatar({Key? key}) : super(key: key);

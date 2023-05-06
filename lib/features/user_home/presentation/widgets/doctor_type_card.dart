@@ -1,14 +1,5 @@
-import 'package:doctor_app/core/constants/constants.dart';
-import 'package:doctor_app/core/locator/service_locator.dart';
-import 'package:doctor_app/core/navigation/navigation_animation.dart';
-import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
-import 'package:doctor_app/features/sorted_doctors/presentation/bloc/bloc/sorted_bloc.dart';
-import 'package:doctor_app/features/sorted_doctors/presentation/pages/filtered_doctor_type_screen.dart';
-import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
-import 'package:doctor_app/features/user_home/presentation/bloc/bloc/user_bloc.dart';
-import 'package:doctor_app/features/user_home/presentation/widgets/doctor_type_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:doctor_app/core/packages/core_packages/core_related_packages.dart';
+import 'package:doctor_app/core/packages/sorted_doctors/sorted_doctors_feature_packages.dart';
 
 class DoctorTypeOptions extends StatelessWidget {
   const DoctorTypeOptions({Key? key}) : super(key: key);

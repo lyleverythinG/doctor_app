@@ -1,5 +1,5 @@
 import 'package:doctor_app/core/reusable_widgets/custom_text_form_field.dart';
-import 'package:flutter/material.dart';
+import '../../../../core/packages/common_packages/common_packages.dart';
 
 class ProvideDoctorInformation extends StatelessWidget {
   final TextEditingController controller;

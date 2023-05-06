@@ -1,6 +1,4 @@
-import 'package:doctor_app/core/constants/constants.dart';
-import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
-import 'package:flutter/material.dart';
+import 'package:doctor_app/core/packages/core_packages/core_related_packages.dart';
 import 'package:intl/intl.dart';
 
 class DoctorCard extends StatelessWidget {

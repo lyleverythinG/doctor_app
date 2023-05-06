@@ -1,4 +1,4 @@
-import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
+import 'package:doctor_app/core/packages/user_home_feature_packages/user_home_related_packages.dart';
 
 class SortFunctions {
   static List<UserModel> sortDoctorsByType(

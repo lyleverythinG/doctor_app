@@ -1,9 +1,4 @@
-import 'dart:async';
-import 'package:doctor_app/core/locator/service_locator.dart';
-import 'package:doctor_app/core/navigation/navigation_animation.dart';
-import 'package:doctor_app/features/user_home/presentation/pages/home.dart';
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:doctor_app/core/packages/core_packages/core_related_packages.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String route = 'splash';

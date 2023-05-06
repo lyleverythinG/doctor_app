@@ -1,9 +1,6 @@
-import 'package:bloc/bloc.dart';
-import 'package:doctor_app/features/user_home/data/repository/user_repo.dart';
-import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
-import 'package:equatable/equatable.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:developer' as developer;
+import '../../../../../core/packages/common_packages/common_packages.dart';
+import '../../../../../core/packages/user_home_feature_packages/user_home_related_packages.dart';
 part 'user_event.dart';
 part 'user_state.dart';
 

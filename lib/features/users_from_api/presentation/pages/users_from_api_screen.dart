@@ -1,7 +1,5 @@
-import 'package:doctor_app/features/users_from_api/presentation/bloc/bloc/user_api_bloc.dart';
-import 'package:doctor_app/features/users_from_api/presentation/widget/users_card.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/packages/common_packages/common_packages.dart';
+import '../../../../core/packages/users_from_api_feature_packages/users_from_api_packages.dart';
 
 class UserFromApiScreen extends StatelessWidget {
   const UserFromApiScreen({Key? key}) : super(key: key);

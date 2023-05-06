@@ -1,8 +1,5 @@
-import 'package:dio/dio.dart';
-import 'package:doctor_app/core/network/api/user_api.dart';
-import 'package:doctor_app/core/network/dio/dio_exception.dart';
-import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
-import 'package:doctor_app/features/users_from_api/domain/users_api_model.dart';
+import 'package:doctor_app/core/packages/core_packages/core_related_packages.dart';
+import 'package:doctor_app/core/packages/users_from_api_feature_packages/users_from_api_packages.dart';
 
 class UserRepo {
   final API userApi;

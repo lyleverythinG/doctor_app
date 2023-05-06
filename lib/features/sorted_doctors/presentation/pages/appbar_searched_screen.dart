@@ -1,6 +1,5 @@
 import 'package:doctor_app/features/sorted_doctors/presentation/widgets/search_delegate_list_view.dart';
-import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
-import 'package:flutter/material.dart';
+import '../../../../core/packages/core_packages/core_related_packages.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   List<UserModel> listOfDoctors;
