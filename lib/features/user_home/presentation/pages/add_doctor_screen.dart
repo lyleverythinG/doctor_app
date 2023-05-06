@@ -100,23 +100,29 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
                     errorText: 'Please enter years of experience',
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                  CustomElevatedButton(
-                    text: 'Add Doctor',
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // hides keyboard
-                        FocusManager.instance.primaryFocus?.unfocus();
-                        context.read<UserBloc>().add(CreateUserDoctor(
-                            doctorName: doctorNameC.text.trim(),
-                            doctorType: doctorTypeVal.trim(),
-                            yearsOfExperience: yearsOfExpC.text.trim()));
+                  BlocListener<UserBloc, UserState>(
+                    listener: (context, state) {
+                      if (state is UserUpdated) {
                         Fluttertoast.showToast(
                           msg: 'Successfully Created The User',
                         );
-                        //clearing fields after adding successfully.
+                        // clearing fields after adding successfully.
                         clearFieldsAfterAdding();
                       }
                     },
+                    child: CustomElevatedButton(
+                      text: 'Add Doctor',
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          // hides keyboard
+                          FocusManager.instance.primaryFocus?.unfocus();
+                          context.read<UserBloc>().add(CreateUserDoctor(
+                              doctorName: doctorNameC.text.trim(),
+                              doctorType: doctorTypeVal.trim(),
+                              yearsOfExperience: yearsOfExpC.text.trim()));
+                        }
+                      },
+                    ),
                   ),
                 ],
               ),

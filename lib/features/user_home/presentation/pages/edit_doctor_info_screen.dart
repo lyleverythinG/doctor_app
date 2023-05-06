@@ -128,26 +128,12 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.05),
-                      CustomElevatedButton(
-                        text: 'Update Doctor Info',
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            context.read<UserBloc>().add(
-                                  UpdateDoctorInfo(
-                                    isFavorite: widget.userModel.isFavorite!,
-                                    userId: widget.userModel.id!,
-                                    userIndex: widget.userIndex,
-                                    doctorName: doctorNameC.text.trim(),
-                                    doctorType: doctorTypeVal!.trim(),
-                                    yearsOfExp: yearsOfExpC.text.trim(),
-                                    createdAt: widget.userModel.createdAt!,
-                                  ),
-                                );
+                      BlocListener<UserBloc, UserState>(
+                        listener: (context, state) {
+                          if (state is UserUpdated) {
                             Fluttertoast.showToast(
                               msg: 'Successfully updated doctor information.',
                             );
-                            // hides keyboard
-                            FocusManager.instance.primaryFocus?.unfocus();
                             if (widget.isWhiteAppBar) {
                               int count = 0;
                               // pop 3 times after updating doctor info if from search bar home screen.
@@ -156,6 +142,26 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
                             }
                           }
                         },
+                        child: CustomElevatedButton(
+                          text: 'Update Doctor Info',
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              context.read<UserBloc>().add(
+                                    UpdateDoctorInfo(
+                                      isFavorite: widget.userModel.isFavorite!,
+                                      userId: widget.userModel.id!,
+                                      userIndex: widget.userIndex,
+                                      doctorName: doctorNameC.text.trim(),
+                                      doctorType: doctorTypeVal!.trim(),
+                                      yearsOfExp: yearsOfExpC.text.trim(),
+                                      createdAt: widget.userModel.createdAt!,
+                                    ),
+                                  );
+                              // hides keyboard
+                              FocusManager.instance.primaryFocus?.unfocus();
+                            }
+                          },
+                        ),
                       ),
                     ],
                   ),
