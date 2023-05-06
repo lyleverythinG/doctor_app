@@ -9,10 +9,10 @@ void main() {
     // In this test, we passed 'Cardiologist' in the sortDoctorsByType function.
     final List<UserModel> doctorsResult = SortFunctions.sortDoctorsByType(
         doctors: DoctorDummyData.doctors, doctorType: 'Cardiologist');
-    // this code will return false if any of the doctor type is not Cardiologist from the result returned by the function.
+    // Will return false if any of the doctor type is not Cardiologist from the result returned by the function.
     bool allDoctorTypeIsCardio =
         !doctorsResult.any((doctor) => doctor.doctorType != "Cardiologist");
-    // the expect method will passed only if allDoctorType from doctorsResult are Cardiologist.
+    // The expect method will passed only if allDoctorType from doctorsResult are Cardiologist.
     expect(allDoctorTypeIsCardio, true);
   });
 }

@@ -63,7 +63,8 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
           color: Colors.black,
         ),
         backgroundColor: widget.isWhiteAppBar
-            ? Constants.kWhite // use white app bar if coming from search bar.
+            ? Constants
+                .kWhite // Used white app bar if coming from search bar for uniformity of colors.
             : null,
       ),
       body: Container(
@@ -96,7 +97,7 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
                       const Align(
                           alignment: Alignment.topLeft,
                           child: CustomText(text: 'Doctor Type:')),
-                      // rebuild only this part of the widget.
+                      // Used Stateful Widget to rebuild this specific part only.
                       StatefulBuilder(
                         builder: (context, builderSetState) {
                           return Container(
@@ -136,7 +137,7 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
                             );
                             if (widget.isWhiteAppBar) {
                               int count = 0;
-                              // pop 3 times after updating doctor info if from search bar home screen.
+                              // Pop 3 times after updating doctor info if update is coming from search bar home screen.
                               Navigator.popUntil(
                                   context, (route) => count++ == 3);
                             }
@@ -157,7 +158,7 @@ class _EditDoctorInfoScreenState extends State<EditDoctorInfoScreen> {
                                       createdAt: widget.userModel.createdAt!,
                                     ),
                                   );
-                              // hides keyboard
+                              // Hides keyboard upon updating user doctor info.
                               FocusManager.instance.primaryFocus?.unfocus();
                             }
                           },
