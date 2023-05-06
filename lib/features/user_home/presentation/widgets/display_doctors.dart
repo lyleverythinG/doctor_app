@@ -29,7 +29,7 @@ class DisplayDoctors extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 itemCount: state.users.length,
                 itemBuilder: ((context, index) {
-                  // swipe left or right to delete a user from the list.
+                  // Swipe left or right to delete a user from the list.
                   return Dismissible(
                     key: Key(state.users[index].id!),
                     background: Container(
@@ -58,7 +58,7 @@ class DisplayDoctors extends StatelessWidget {
                         )));
                       },
                       onDoubleTap: () {
-                        // can add or remove from favorites.
+                        // Can add or remove from favorites.
                         state.users[index].isFavorite == 'false'
                             ? context.read<UserBloc>().add(
                                   AddDoctorToFavorites(
@@ -89,7 +89,7 @@ class DisplayDoctors extends StatelessWidget {
         if (state is LoadingState) {
           return const Loading();
         }
-        // used this instead of an empty container because this is a const.
+        // Used SizedBox.shrink instead of an empty container because this is a const.
         return const SizedBox.shrink();
       },
     );

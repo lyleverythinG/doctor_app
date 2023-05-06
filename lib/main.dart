@@ -34,13 +34,16 @@ class DoctorApp extends StatelessWidget {
       create: ((context) => UserRepo(userApi: locator.get<API>())),
       child: MultiBlocProvider(
         providers: [
+          // This Bloc is used for CRUD functionalities.
           BlocProvider(
             create: (context) =>
                 UserBloc(userRepo: RepositoryProvider.of<UserRepo>(context)),
           ),
+          // This Bloc is used for sorting/filter the doctor by type.
           BlocProvider(
             create: (context) => SortedBloc(),
           ),
+          // This Bloc is used for fetching users from the api.
           BlocProvider(
             create: (context) =>
                 UserApiBloc(userRepo: RepositoryProvider.of<UserRepo>(context)),

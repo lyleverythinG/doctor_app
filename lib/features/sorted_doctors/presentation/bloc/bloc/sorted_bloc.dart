@@ -10,6 +10,7 @@ class SortedBloc extends Bloc<SortedEvent, SortedState> {
   final List<UserModel> sortedResult = [];
   SortedBloc() : super(SortedInitial()) {
     on<SortByDoctorType>((event, emit) {
+      // Event for sorting users by doctor type.
       try {
         emit(const SortedUsersLoadingState());
         final sortedDoctors = SortFunctions.sortDoctorsByType(

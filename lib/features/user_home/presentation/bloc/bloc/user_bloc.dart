@@ -12,7 +12,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   List<UserModel> users = [];
   UserBloc({required this.userRepo}) : super(UserInitial()) {
     on<CreateUserDoctor>((event, emit) async {
-      // adds user
+      // Event for adding a user.
       try {
         emit(const LoadingState());
         final userDoctor = await userRepo.addDoctor(
@@ -20,7 +20,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
             type: event.doctorType,
             yearsOfExp: event.yearsOfExperience);
 
-        // inserts the newly added user to the first on the list.
+        // Inserts the newly added user to the first on the list.
         users.insert(0, userDoctor);
         emit(UserUpdated(users: users));
       } catch (e) {
@@ -28,7 +28,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       }
     });
     on<UpdateDoctorInfo>((event, emit) async {
-      // updates user info
+      // Event for updating user information.
       try {
         emit(const LoadingState());
         final updatedUser = await userRepo.updateDoctorInfo(
@@ -40,7 +40,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         );
         List<UserModel> updatedUsers = List.from(users);
         updatedUsers[event.userIndex] = updatedUser;
-        // added missing values that are not part of response.
+        // Adding missing values that are not part of response.
         updatedUsers[event.userIndex].createdAt = event.createdAt;
         updatedUsers[event.userIndex].id = event.userId;
         updatedUsers[event.userIndex].isFavorite = event.isFavorite;
@@ -52,7 +52,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     });
 
     on<DeleteDoctor>((event, emit) async {
-      // deletes user doctor.
+      // Event for deleting user.
       try {
         emit(const LoadingState());
         await userRepo.deleteUser(event.userId);
@@ -65,7 +65,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     });
 
     on<AddDoctorToFavorites>((event, emit) async {
-      // add a particular doctor to favorites.
+      // Event for adding a doctor to favorites.
       try {
         emit(const LoadingState());
         final updatedUser = await userRepo.addDoctorToFavorite(
@@ -81,7 +81,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     });
 
     on<RemoveDoctorFromFavorites>((event, emit) async {
-      // remove a particular doctor from favorites list.
+      // Event for removing a doctor from favorites.
       try {
         emit(const LoadingState());
         final updatedUser =

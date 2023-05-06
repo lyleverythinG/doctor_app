@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  // text field decorations
+  // Text field decorations
   static const kTextFieldDecoration = InputDecoration(
     hintText: '',
     contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -104,7 +104,7 @@ class Constants {
   static const gapH48 = SizedBox(height: Constants.p48);
   static const gapH64 = SizedBox(height: Constants.p64);
 
-  // dio related constants
+  // Dio related constants
   static const String baseUrl = "https://reqres.in/api";
   static const String gettingUsersFromApiUrl =
       "https://reqres.in/api/users?page=2";

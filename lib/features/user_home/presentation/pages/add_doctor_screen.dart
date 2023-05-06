@@ -70,7 +70,7 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
                   const Align(
                       alignment: Alignment.topLeft,
                       child: CustomText(text: 'Doctor Type:')),
-                  // rebuild only this part of the widget.
+                  // Will only rebuild this part of the widget if needed.
                   StatefulBuilder(
                     builder: (context, builderSetState) {
                       return Container(
@@ -106,7 +106,7 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
                         Fluttertoast.showToast(
                           msg: 'Successfully Created The User',
                         );
-                        // clearing fields after adding successfully.
+                        // Clearing fields after adding successfully.
                         clearFieldsAfterAdding();
                       }
                     },
@@ -114,7 +114,7 @@ class _AddDoctorScreenState extends State<AddDoctorScreen> {
                       text: 'Add Doctor',
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          // hides keyboard
+                          // Hides keyboard upon adding a user.
                           FocusManager.instance.primaryFocus?.unfocus();
                           context.read<UserBloc>().add(CreateUserDoctor(
                               doctorName: doctorNameC.text.trim(),

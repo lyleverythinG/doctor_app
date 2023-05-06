@@ -7,7 +7,6 @@ class CustomSearchDelegate extends SearchDelegate {
   final bool? isFromHomeSearch;
   CustomSearchDelegate(
       {required this.listOfDoctors, this.isFromHomeSearch = true});
-  //this is the list you want to search
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -22,8 +21,7 @@ class CustomSearchDelegate extends SearchDelegate {
   Widget? buildLeading(BuildContext context) {
     return IconButton(
         onPressed: () {
-          //closes the search page and opens back the original page.
-          //this is the part that we can leave and close the search bar.
+          // Closes the search page and opens back the original page.
           close(context, null);
         },
         icon: const Icon(Icons.arrow_back));
@@ -31,10 +29,10 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    //this is where we create the UI for the results;
+    // The results shown after the user submits a search.
     List<UserModel> matchedKeyword = [];
     for (var doctor in listOfDoctors) {
-      // searched bar checks for matching doctor type or name.
+      // Searched bar checks for matching doctor type or name.
       if (doctor.doctorType!.toLowerCase().contains(query.toLowerCase()) ||
           doctor.doctorName!.toLowerCase().contains(query.toLowerCase())) {
         matchedKeyword.add(doctor);
@@ -50,7 +48,7 @@ class CustomSearchDelegate extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     List<UserModel> matchedKeyword = [];
     for (var doctor in listOfDoctors) {
-      // searched bar checks for matching doctor type or name.
+      // Condition checks for matching doctor type or name.
       if (doctor.doctorType!.toLowerCase().contains(query.toLowerCase()) ||
           doctor.doctorName!.toLowerCase().contains(query.toLowerCase())) {
         matchedKeyword.add(doctor);

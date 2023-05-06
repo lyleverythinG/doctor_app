@@ -18,7 +18,7 @@ class SearchDelegateListView extends StatelessWidget {
     return ListView.builder(
       itemCount: matchedKeyword.length,
       itemBuilder: ((context, index) {
-        // specific doctor from the list of doctors
+        // Specific doctor from the list of doctors
         var specificDoctor = matchedKeyword[index];
         return ListTile(
           leading: Container(
@@ -35,9 +35,9 @@ class SearchDelegateListView extends StatelessWidget {
           title: Text(specificDoctor.doctorName!),
           subtitle: Text(specificDoctor.doctorType!),
           onTap: () {
-            //closes the keyboard when navigating to other screen to avoid overflows
+            // Closes the keyboard when navigating to other screen to avoid overflows
             FocusManager.instance.primaryFocus?.unfocus();
-            // this is the index/pos of the current user in the actual doctors list from user bloc.
+            // The index/pos of the current user in the actual doctors list from user bloc.
             int userIndex = listOfDoctors.indexOf(specificDoctor);
             Navigator.push(
                 context,
