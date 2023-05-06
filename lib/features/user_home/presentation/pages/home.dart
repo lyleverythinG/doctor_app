@@ -35,6 +35,7 @@ class _HomeState extends State<Home> {
     }
     return Scaffold(
       appBar: AppBar(
+        title: _currentIndex == 3 ? const Text('Users Fetched from API') : null,
         actions: [
           if (_currentIndex == 0)
             IconButton(
