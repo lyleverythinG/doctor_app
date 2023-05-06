@@ -46,7 +46,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         updatedUsers[event.userIndex].isFavorite = event.isFavorite;
         emit(UserUpdated(users: updatedUsers));
       } catch (e) {
-        developer.log('Error Updating doctor Info: $e',
+        developer.log('Error updating doctor Info: $e',
             name: 'UpdatingDoctorInfo');
       }
     });
@@ -60,8 +60,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         Fluttertoast.showToast(msg: 'deleted successfully');
         emit(UserUpdated(users: users));
       } catch (e) {
-        developer.log('Error Deleting Doctor Info: $e',
-            name: 'DeletingDoctorInfo');
+        developer.log('Error deleting doctor: $e', name: 'DeletingUserDoctor');
       }
     });
 
@@ -76,7 +75,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         Fluttertoast.showToast(msg: 'Added to favorites');
         emit(UserUpdated(users: users));
       } catch (e) {
-        developer.log('Error Adding Doctor To Favorites: $e',
+        developer.log('Error adding doctor to favorites: $e',
             name: 'ErrorAddingDoctorToFavorite');
       }
     });
@@ -91,8 +90,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         Fluttertoast.showToast(msg: 'Removed from favorites');
         emit(UserUpdated(users: users));
       } catch (e) {
-        developer.log('Error Adding Doctor To Favorites: $e',
-            name: 'ErrorAddingDoctorToFavorite');
+        developer.log('Error removing doctor from favorites: $e',
+            name: 'ErrorRemovingDoctorFromFavorites');
       }
     });
   }
