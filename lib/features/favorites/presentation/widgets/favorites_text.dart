@@ -1,5 +1,4 @@
-import 'package:doctor_app/core/reusable_widgets/custom_text.dart';
-import 'package:flutter/material.dart';
+import 'package:doctor_app/core/packages/core_packages/core_related_packages.dart';
 
 class NoFavoritesText extends StatelessWidget {
   const NoFavoritesText({Key? key}) : super(key: key);

@@ -1,9 +1,5 @@
-import 'package:doctor_app/core/reusable_widgets/loading.dart';
-import 'package:doctor_app/features/favorites/presentation/widgets/favorites_text.dart';
-import 'package:doctor_app/features/user_home/presentation/bloc/bloc/user_bloc.dart';
-import 'package:doctor_app/features/user_home/presentation/widgets/doctor_card.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:doctor_app/core/packages/core_packages/core_related_packages.dart';
+import '../../../../core/packages/favorites_packages/favorites_related_packages.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({Key? key}) : super(key: key);

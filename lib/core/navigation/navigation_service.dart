@@ -1,7 +1,5 @@
-import 'package:doctor_app/core/navigation/navigation_animation.dart';
+import 'package:doctor_app/core/packages/core_packages/core_related_packages.dart';
 import 'package:doctor_app/features/splash_screen/splash_screen.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 class NavigationService {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

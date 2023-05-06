@@ -4,3 +4,6 @@ export 'package:doctor_app/features/user_home/presentation/pages/home.dart';
 export 'package:doctor_app/features/user_home/domain/model/user_model.dart';
 export 'package:doctor_app/features/user_home/presentation/widgets/doctor_card.dart';
 export 'package:doctor_app/features/user_home/data/repository/sort_functions.dart';
+export 'package:doctor_app/features/user_home/presentation/pages/edit_doctor_info_screen.dart';
+export 'package:doctor_app/features/user_home/presentation/widgets/add_doctor_text.dart';
+export 'package:doctor_app/features/user_home/presentation/widgets/doctor_type_image.dart';

@@ -1,9 +1,7 @@
-import 'package:bloc/bloc.dart';
-import 'package:doctor_app/features/user_home/data/repository/user_repo.dart';
-import 'package:doctor_app/features/users_from_api/domain/users_api_model.dart';
-import 'package:equatable/equatable.dart';
 import 'dart:developer' as developer;
-import 'package:hive/hive.dart';
+import 'package:doctor_app/core/packages/users_from_api_feature_packages/users_from_api_packages.dart';
+import 'package:doctor_app/features/user_home/data/repository/user_repo.dart';
+import '../../../../../core/packages/common_packages/common_packages.dart';
 part 'user_api_event.dart';
 part 'user_api_state.dart';
 

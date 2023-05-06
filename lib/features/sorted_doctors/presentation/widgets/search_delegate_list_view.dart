@@ -1,6 +1,6 @@
-import 'package:doctor_app/features/sorted_doctors/presentation/pages/searched_doctor_screen.dart';
-import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
-import 'package:flutter/material.dart';
+import '../../../../core/packages/common_packages/common_packages.dart';
+import '../../../../core/packages/sorted_doctors/sorted_doctors_feature_packages.dart';
+import '../../../../core/packages/user_home_feature_packages/user_home_related_packages.dart';
 
 class SearchDelegateListView extends StatelessWidget {
   final List<UserModel> listOfDoctors;
