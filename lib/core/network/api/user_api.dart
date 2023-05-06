@@ -28,10 +28,11 @@ class API {
     }
   }
 
-  Future<Response> getUser(String id) async {
+  Future<Response> getUsersFromApi() async {
     try {
+      // this fetches the users from the response of the api page 2.
       final Response response = await dioClient.get(
-        Constants.users + '/$id',
+        Constants.gettingUsersFromApiUrl,
       );
       return response;
     } catch (e) {

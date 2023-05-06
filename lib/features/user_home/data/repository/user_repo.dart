@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:doctor_app/core/network/api/user_api.dart';
 import 'package:doctor_app/core/network/dio/dio_exception.dart';
 import 'package:doctor_app/features/user_home/domain/model/user_model.dart';
+import 'package:doctor_app/features/users_from_api/domain/users_api_model.dart';
 
 class UserRepo {
   final API userApi;
@@ -25,11 +26,12 @@ class UserRepo {
     }
   }
 
-  Future<UserModel> getUser(String id) async {
+  Future<List<UserApiModel>> getUsers() async {
     try {
-      final response = await userApi.getUser(id);
-      final user = UserModel.fromJson(response.data);
-      return user;
+      final response = await userApi.getUsersFromApi();
+      final json = response.data['data'] as List<dynamic>;
+      final users = json.map((data) => UserApiModel.fromJson(data)).toList();
+      return users;
     } on DioError catch (e) {
       final errorMessage = DioExceptions.dioError(e).toString();
       throw errorMessage;
